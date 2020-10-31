@@ -99,11 +99,13 @@
    	awesome
 	networkmanager_dmenu
 	efibootmgr
+	scrot
      
   	# GUI tools
   	firefox
   	gparted
   	pcmanfm
+	xfce.xfce4-screenshooter
   	
 	#Window manager stuff
   	nitrogen
