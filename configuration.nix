@@ -18,7 +18,7 @@
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Asia/Kolkata";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -91,13 +91,13 @@
   	fish
   	git
   	kitty
-  	#bashtop
-  	htop
+  	nnn
+	htop
   	tlp
   	powertop
    	youtube-dl
    	awesome
-	networkmanager_dmenu
+	networkmanagerapplet
 	efibootmgr
 	scrot
      
@@ -105,6 +105,11 @@
   	firefox
   	gparted
   	pcmanfm
+	vscode-with-extensions
+	sublime
+	emacs
+	dfilemanager
+	xfe
 	xfce.xfce4-screenshooter
   	
 	#Window manager stuff
@@ -112,7 +117,8 @@
   	rofi
    	picom
    ];
-
+  #Allow Properietry packages
+  nixpkgs.config.allowUnfree = true;
   # Maintainence
   nix.gc.automatic = true; #runs nix-collect-garbage which removes old unrefrenced packages
   nix.gc.dates = "18:30";
