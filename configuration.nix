@@ -72,7 +72,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.creator54 = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "networkmanager" "gparted"]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "video" "networkmanager" "gparted"]; # Enable ‘sudo’ for the user.
    };
 
   # Autologin
@@ -84,32 +84,37 @@
   environment.systemPackages = with pkgs; [
 	
 	# CLI tools
-  	neofetch
+  	xorg.xinit
+	neofetch
   	wget
   	tmux
-  	vim
+  	neovim
   	fish
   	git
   	kitty
   	nnn
 	htop
-  	tlp
   	powertop
    	youtube-dl
    	awesome
+	redshift
+	betterlockscreen
 	networkmanagerapplet
 	efibootmgr
 	scrot
-     
+
   	# GUI tools
-  	firefox
+	mpv
+	vlc
+	firefox
+	feh
+	godot
+	tdesktop
   	gparted
   	pcmanfm
 	vscode-with-extensions
 	sublime
 	emacs
-	dfilemanager
-	xfe
 	xfce.xfce4-screenshooter
   	
 	#Window manager stuff
@@ -117,11 +122,21 @@
   	rofi
    	picom
    ];
+
+  # Brightness controller
+  programs.light.enable = true;
+  # more info: https://nixos.wiki/wiki/Backlight
+
+  # Battery/Thermal stuff
+  services.thermald.enable = true;
+  services.tlp.enable = true;
+  
   #Allow Properietry packages
-  nixpkgs.config.allowUnfree = true;
+   nixpkgs.config.allowUnfree = true;
+ 
   # Maintainence
-  nix.gc.automatic = true; #runs nix-collect-garbage which removes old unrefrenced packages
-  nix.gc.dates = "18:30";
+   nix.gc.automatic = true; #runs nix-collect-garbage which removes old unrefrenced packages
+   nix.gc.dates = "18:30";
   # nix-collect-garbage -d 
   # this removes old roots,removing the ability to rollback to them
   # for specific profiles
