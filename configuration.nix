@@ -102,6 +102,10 @@
 	networkmanagerapplet
 	efibootmgr
 	scrot
+	wtf
+	fortune
+	figlet
+	lazygit
 
   	# GUI tools
 	mpv
