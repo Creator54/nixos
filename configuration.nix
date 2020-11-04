@@ -39,6 +39,15 @@
      font = "Lat2-Terminus16";
      keyMap = "us";
    };
+  
+  # Services not necessary
+  systemd.services.systemd-udev-settle.enable = false; # just prolongs boot time not really of any use 
+  systemd.services.NetworkManager-wait-online.enable = false; # just prolongs boot time not really of any use
+  # some info : https://discourse.nixos.org/t/boot-faster-by-disabling-udev-settle-and-nm-wait-online/6339
+
+  systemd.services.systemd-journal-flush.enable = false;
+  systemd.services.lvm2-activation.enable = false;
+  systemd.services.lvm2-activation-early.enable = false;
 
   #Enable a Desktop Environment
   services.xserver.enable = true;
@@ -166,7 +175,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
