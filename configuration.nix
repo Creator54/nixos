@@ -52,11 +52,11 @@
   #Enable a Desktop Environment
   services.xserver.enable = true;
   #services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "none+awesome";
+  #services.xserver.displayManager.defaultSession = "none+qtile";
+  #now managing this via xinitrc
   services.xserver.displayManager.startx.enable = true;
   services.xserver.windowManager = {
      awesome.enable = true;
-     qtile.enable = true;
   };
 
   #Default Shell
@@ -81,40 +81,49 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.creator54 = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "video" "networkmanager" "gparted"]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "video" "networkmanager" ]; # Enable ‘sudo’ for the user.
    };
 
   # Autologin
    services.mingetty.autologinUser = "creator54";
   # more info: https://github.com/NixOS/nixpkgs/blob/a6968ad43c1b6ab7fc341ddba4ed0a082a24229b/nixos/modules/profiles/installation-device.nix#L36
 
+  # Autostart packages on login/tty with fish
+  programs.fish = {
+    enable = true;
+    loginShellInit = ''
+      if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
+        startx
+      end
+    '';
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 	
 	# CLI tools
+  	microcodeIntel
   	xorg.xinit
 	neofetch
   	wget
-  	tmux
   	neovim
-  	fish
   	git
   	kitty
   	nnn
 	htop
   	powertop
    	youtube-dl
-   	awesome
 	redshift
 	betterlockscreen
 	networkmanagerapplet
 	efibootmgr
 	scrot
-	wtf
 	fortune
-	figlet
 	lazygit
+	w3m
+	cmatrix
+	killall
 
   	# GUI tools
 	mpv
@@ -124,7 +133,6 @@
 	godot
 	tdesktop
   	gparted
-  	pcmanfm
 	vscode-with-extensions
 	sublime
 	emacs
@@ -133,7 +141,6 @@
 	#Window manager stuff
   	nitrogen
   	rofi
-   	picom
    ];
 
   # Brightness controller
