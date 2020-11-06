@@ -35,16 +35,18 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-   console = {
-     font = "Lat2-Terminus16";
-     keyMap = "us";
-   };
-  
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+    earlySetup = true;
+  };
+
   # Services not necessary
   systemd.services.systemd-udev-settle.enable = false; # just prolongs boot time not really of any use 
   systemd.services.NetworkManager-wait-online.enable = false; # just prolongs boot time not really of any use
   # some info : https://discourse.nixos.org/t/boot-faster-by-disabling-udev-settle-and-nm-wait-online/6339
-
+  
+  systemd.services.firewall.enable = false;
   systemd.services.systemd-journal-flush.enable = false;
   systemd.services.lvm2-activation.enable = false;
   systemd.services.lvm2-activation-early.enable = false;
@@ -108,7 +110,12 @@
 	neofetch
   	wget
   	neovim
-  	git
+	python
+	python38Packages.pip
+	gcc
+	clang
+	pipes
+	git
   	kitty
   	nnn
 	htop
@@ -150,7 +157,7 @@
   # Battery/Thermal stuff
   services.thermald.enable = true;
   services.tlp.enable = true;
-  
+
   #Allow Properietry packages
    nixpkgs.config.allowUnfree = true;
  
