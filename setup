@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+# Setup Script
+
+# Config Sources
+awesome_src="https://github.com/creator54/awesome-configs"
+fish_src="https://github.com/creator54/fish_config"
+fish_theme="https://github.com/creator54/mzish"
+kitty_src="https://github.com/creator54/kitty_config"
+scripts="https://github.com/creator54/scripts"
+
+# Path name here/where the configs need to be cloned
+conf_path=("/home/creator54/.config/awesome" "/home/creator54/.scripts" "/home/creator54/.config/fish/" "/home/creator54/.local/share/omf/themes/default/" "/home/creator54/.config/kitty/")
+
+# Source Array
+conf_src=("awesome_src" "$scripts" "$fish_src" "$fish_theme" "$kitty_src")
+
+declare -i index
+cmd="git clone $conf ${conf_path[$index]} -b $branch"
+branch="master"
+debug="n"
+option="n"
+
+# NOte : path names should be in same sequence as source names
+
+clear
+echo "------------------------------------------------------------"
+echo "       Config Script:pulls configs from defined repos"
+echo "------------------------------------------------------------"
+echo ""
+echo ""
+echo ""
+read -p "Debug(n)              :  " $debug
+
+clear
+echo "------------------------------------------------------------"
+echo "       Config Script:pulls configs from defined repos"
+echo "	      	        Pulling latest configs:"
+echo "------------------------------------------------------------"
+echo ""
+echo ""
+
+for conf in "${conf_src[@]}"
+do
+	# omf check
+
+	if [ "$(fish -c "type omf" &> /dev/null;echo $?)" != 0 ]; then # type checks if omf is defined/installed or not 
+		echo "omf not found !"
+		echo "installing omf"
+		rm -rf /home/creator54/.local/share/omf
+		rm -rf /home/creator54/.local/share/fish
+		rm -rf /home/creator54/.config/fish
+		curl -L https://get.oh-my.fish | fish 
+	fi
+	echo "Oh my Fish installed !"
+	echo "------------------------------------------------------------"
+	
+	if [ -e ${conf_path[$index]} ]; then
+		read -p "${conf_path[$index]} exists remove(y/n) ? " $option
+		if [ "$option" = y ]; then
+			rm -rf ${conf_path[$index]}
+			echo "Removed previous ${conf_path[$index]}"
+		else
+			mkdir -p ${conf_path[$index]}
+		fi
+	fi
+	
+	echo "Cloning $conf to ${conf_path[$index]}"
+	read -p "Checkout branch(default) :" $branch
+	cmd="git clone $conf ${conf_path[index]}"
+
+	if [ "$debug" = y ]; then
+		$cmd
+	else
+		$cmd &> /dev/null
+	fi
+	index+=1
+	echo "$index/${#conf_src[*]} done !"
+	echo "------------------------------------------------------------"
+	if [ 'git branch | grep $branch' ]; then
+		path=$pwd
+		cd ${conf_path[$index]} && git checkout $branch &> /dev/null
+		cd $path
+	fi
+done
+echo "Adding awesomewm in .xinitrc"
+echo "~/.config/awesome/.xinitrc" > /home/creator54/.xinitrc
+echo "exec awesome" >> /home/creator54/.xinitrc
+chown -R creator54:users ~/* #since the script is running as sudo(cuz should launch after nixos --rebuild so kept in /etc/nixos) thus chown required
+echo "------------------------------------------------------------"
+echo "				All done !"
+echo "------------------------------------------------------------"

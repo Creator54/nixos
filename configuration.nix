@@ -4,7 +4,7 @@
 
 { config, pkgs, ... }:
 
-{
+{ 
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -12,7 +12,11 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 0;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "quiet" ];
+  boot.consoleLogLevel = 4;
+  boot.plymouth.enable = true;
 
   #networking.hostName = "nixos"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,7 +38,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_IN.UTF-8";
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -53,14 +57,14 @@
 
   #Enable a Desktop Environment
   services.xserver.enable = true;
-  #services.xserver.displayManager.sddm.enable = true;
   #services.xserver.displayManager.defaultSession = "none+qtile";
   #now managing this via xinitrc
   services.xserver.displayManager.startx.enable = true;
   services.xserver.windowManager = {
      awesome.enable = true;
+     qtile.enable = true;
   };
-
+  
   #Default Shell
   users.extraUsers.creator54 = {
 	shell = pkgs.fish;
@@ -72,10 +76,23 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
+  
+  # Some fonts
+   fonts.fonts = with pkgs; [
+     fira-code fira-code-symbols
+     cascadia-code
+     source-code-pro
+     twemoji-color-font
+   ];
+  
+  # Enable opengl and updateMicrocode
+   hardware.cpu.intel.updateMicrocode = true;
+   hardware.opengl.driSupport32Bit = true;
+ 
+  # Sound 
    sound.enable = true;
    hardware.pulseaudio.enable = true;
+   hardware.pulseaudio.support32Bit = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
    services.xserver.libinput.enable = true;
@@ -83,7 +100,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.creator54 = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "video" "networkmanager" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "power" "storage" "wheel" "audio" "video" "networkmanager" ]; # Enable ‘sudo’ for the user.
    };
 
   # Autologin
@@ -95,7 +112,8 @@
     enable = true;
     loginShellInit = ''
       if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
-        startx
+        sway
+	#startx &> /dev/null
       end
     '';
   };
@@ -105,50 +123,49 @@
   environment.systemPackages = with pkgs; [
 	
 	# CLI tools
-  	microcodeIntel
-  	xorg.xinit
-	neofetch
+  	sway
+	xorg.xinit
   	wget
-  	neovim
-	python
-	python38Packages.pip
-	gcc
-	clang
-	pipes
+  	vim
 	git
   	kitty
   	nnn
 	htop
-  	powertop
    	youtube-dl
-	redshift
-	betterlockscreen
 	networkmanagerapplet
 	efibootmgr
 	scrot
 	fortune
-	lazygit
-	w3m
 	cmatrix
 	killall
+	powertop
+	python
 
   	# GUI tools
+  	godot
+ 	qbittorrent
+	dolphin
+	meld
 	mpv
 	vlc
 	firefox
 	feh
-	godot
 	tdesktop
   	gparted
-	vscode-with-extensions
-	sublime
-	emacs
+	adapta-gtk-theme #dark theme
+	kdeFrameworks.breeze-icons # icons for dolphin,meld etc
+	lxappearance-gtk2 # for setting icons
+	colorpicker
 	xfce.xfce4-screenshooter
   	
 	#Window manager stuff
   	nitrogen
   	rofi
    ];
+
+  # for theming  
+  #programs.dconf.enable = true;
+  # more info: https://nixos.wiki/wiki/I3
 
   # Brightness controller
   programs.light.enable = true;
@@ -200,4 +217,5 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
+
 
