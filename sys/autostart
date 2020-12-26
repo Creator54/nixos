@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if ! [[ -f ~/.xinitrc ]] ; then
+	ln -s ~/.config/awesome/.xinitrc ~/.xinitrc;
+fi;
+
+dialog --colors --backtitle "\Z1$(systemd-analyze)" \
+  --title "Welcome back $USER"  --yesno '\n\n'"Start Xserver ?"'\n'"DE/WM : $(cat ~/.xinitrc | grep exec|cut --complement -d " " -f 1)" 8 40 \
+
+if [[ $? == 0 ]] ; then
+	startx &> /dev/null;
+else
+	exit;
+fi
+clear;
