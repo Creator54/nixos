@@ -42,6 +42,8 @@
     ];
   };
 
+  sound.enable = true;
+
   # autostart on tty1 login
   programs.fish = {
     enable = true;
