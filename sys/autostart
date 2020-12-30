@@ -1,15 +1,61 @@
 #!/usr/bin/env bash
 
-if ! [[ -f ~/.xinitrc ]] ; then
+col=$(tput cols)
+title="Fetching your configs"
+end="Press any key to start xserver .."
+space="		"
+space1="	    "
+
+f1() {
+	for (( i=1; i<=$col; i++ ));
+	do
+		printf "$1";
+	done;
+}
+
+
+clear
+f1 =;
+echo
+echo
+printf `tput bold`"%*s\n" $(((${#title}+$col)/2)) "$space $title"`tput sgr0`
+echo
+f1 =;
+echo
+echo 
+if ! [[ -d ~/.config/awesome ]] ; then
+	echo "Awesome WM";
+	echo
+	git clone --depth=1 https://github.com/creator54/awesome-configs -b nixos_test ~/.config/awesome;
 	ln -s ~/.config/awesome/.xinitrc ~/.xinitrc;
+	echo "symlinked xinitrc";
+	f1 +;
+fi
+
+if ! [[ -d ~/.local/share/omf ]] ; then
+	echo "Fish";
+	echo
+	if curl -L https://get.oh-my.fish|fish ; then
+		echo "Switching theme: mzish";
+		git clone https://github.com/creator54/mzish -b test ~/.local/share/omf/themes/mzish;
+		fish -c "omf theme mzish";
+	fi
+	f1 +;
 fi;
 
-dialog --colors --backtitle "\Z1$(systemd-analyze)" \
-  --title "Welcome back $USER"  --yesno '\n\n'"Start Xserver ?"'\n'"DE/WM : $(cat ~/.xinitrc | grep exec|cut --complement -d " " -f 1)" 8 40 \
+echo "All done !"
+f1 =;
+echo
+echo
 
 if [[ $? == 0 ]] ; then
-	startx &> /dev/null;
+	printf "%*s\n" $(((${#end}+$col)/2)) "$space1 $end";
+	read key
+	if [ ${#key} -eq 0 ] ; then
+		startx &> /dev/null;
+	fi
 else
 	exit;
 fi
 clear;
+
