@@ -43,14 +43,6 @@ in
      twemoji-color-font
    ];
 
-  # hardware related packages
-  hardware = {
-    cpu.intel.updateMicrocode = true;
-    opengl.driSupport32Bit = true;
-    pulseaudio.enable = true;
-    pulseaudio.support32Bit = true;
-  };
-
   # Allow Properietry packages
   nixpkgs.config.allowUnfree = true;
 }
