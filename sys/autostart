@@ -50,6 +50,24 @@ if ! [[ -d ~/.config/kitty ]] ; then
 	f1 +;
 fi;
 
+if ! [[ -d ~/.SpaceVim.d ]] ; then
+	echo "SpaceVim";
+	echo
+	if curl -sLf https://spacevim.org/install.sh | bash ; then
+		echo "Switching theme to SpaceVim";
+		sed -i 's/gruvbox/SpaceVim/' ~/.SpaceVim.d/init.toml;
+		echo "adding cutom plugins"
+		{
+			echo "# custom plugins {{{"
+			echo "[[colorizer]]"
+			echo "name = 'lilydjwg/colorizer'"
+			echo "merged = 0"
+			echo "# }}}"
+		} >> ~/.SpaceVim.d/init.toml;
+	fi
+	f1 +;
+fi;
+
 echo "All done !"
 f1 =;
 echo
