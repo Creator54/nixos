@@ -57,11 +57,11 @@ if ! [[ -d ~/.SpaceVim.d ]] ; then
 	f1 +;
 
 # .SpaceVim.d dir is generated after first use thus below settigs are applied on next run/autostart
-elif cat ~/.SpaceVim.d/init.toml | grep 'gruvbox\|colorizer' ; then
+elif cat ~/.SpaceVim.d/init.toml | grep 'gruvbox\|colorizer' &>/dev/null ; then
 	echo "Switching theme to SpaceVim";
 	sed -i 's/gruvbox/SpaceVim/' ~/.SpaceVim.d/init.toml;
 	echo "adding custom plugins"
-	if ! cat ~/.SpaceVim.d/init.toml | grep 'lilydjwg/colorizer' ; then
+	if ! cat ~/.SpaceVim.d/init.toml | grep 'lilydjwg/colorizer' &>/dev/null ; then
 		{
 			echo ""
 			echo "[[colorizer]]"
@@ -71,7 +71,7 @@ elif cat ~/.SpaceVim.d/init.toml | grep 'gruvbox\|colorizer' ; then
 	fi
 fi;
 
-if ! [[ -d ~/.config/nixpkgs/config.nix ]] ; then
+if ! [[ -d ~/.config/nixpkgs/config.nix ]] & ! cat ~/.config/nixpkgs/config.nix | grep 'allowUnfree' &> /dev/null ; then
 	mkdir -p ~/.config/nixpkgs;
 	echo "Allow installing proprietry packages from nixpkgs";
 	echo "{ allowUnfree = true; }" >> ~/.config/nixpkgs/config.nix;
