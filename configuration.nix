@@ -11,7 +11,7 @@
   boot = {
     loader = {
       systemd-boot.enable = true;
-      timeout = 1;
+      #timeout = 1;
       efi.canTouchEfiVariables = true;
     };
     #kernelParams = ["quiet" ];

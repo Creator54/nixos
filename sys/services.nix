@@ -84,7 +84,7 @@
     enable = true;
     loginShellInit = ''
       if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
-        exec /etc/nixos/sys/autostart
+        #exec /etc/nixos/sys/autostart
       end
     '';
   };

@@ -10,7 +10,7 @@
     initrd.kernelModules = [ "i915" ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    #kernelPackages = pkgs.linuxPackages_latest;
 
     # https://discourse.nixos.org/t/thinkpad-t470s-power-management/8141
     extraModprobeConfig = lib.mkMerge [
@@ -44,18 +44,13 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2f992723-4a2c-4d7b-a6ae-bcb0a7fbdded";
+    { device = "/dev/sda2";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/71C6-3FFC";
+    { device = "/dev/sda1";
       fsType = "vfat";
-    };
-
-  fileSystems."/media/data" =
-    { device = "/dev/disk/by-uuid/c5a7dad5-deaa-4a06-ab8b-b4f48c619fe2";
-      fsType = "ext4";
     };
 
   swapDevices = [ { device = "/swapfile"; size = 4096; } ];
