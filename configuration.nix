@@ -6,6 +6,7 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
+      ./desktop/gnome.nix
     ];
 
   boot = {

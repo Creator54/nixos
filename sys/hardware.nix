@@ -44,13 +44,18 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/sda2";
+    { device = "/dev/sda4";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     { device = "/dev/sda1";
       fsType = "vfat";
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/sda5";
+      fsType = "ext4";
     };
 
   swapDevices = [ { device = "/swapfile"; size = 4096; } ];

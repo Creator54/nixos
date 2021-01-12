@@ -7,13 +7,6 @@
       enable = true;
       layout = "us";
       libinput.enable = true; 				# touchpad support generally enabled by most display managers
-      displayManager = {
-        defaultSession = "none+awesome";
-        startx.enable = true;
-      };
-      windowManager = {
-	awesome.enable = true;
-      };
     };
 
     udev.extraRules = lib.mkMerge [

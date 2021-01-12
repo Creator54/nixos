@@ -21,8 +21,6 @@ in
   environment.systemPackages = with pkgs; [
     wget vim htop nox git rofi unstable.dialog
     firefox
-    kdeconnect
-    dolphin
     kitty
     networkmanagerapplet
     unstable.meld
