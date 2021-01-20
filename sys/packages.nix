@@ -23,6 +23,7 @@ in
     firefox
     kitty
     networkmanagerapplet
+    unstable.papirus-maia-icon-theme
     unstable.meld
     unstable.xfce.mousepad
     adapta-gtk-theme #dark theme
