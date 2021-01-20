@@ -19,18 +19,13 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    wget vim htop nox git rofi unstable.dialog
+    wget vim htop nox git unstable.dialog
     firefox
     kitty
-    networkmanagerapplet
     unstable.papirus-maia-icon-theme
-    unstable.meld
-    unstable.xfce.mousepad
     adapta-gtk-theme #dark theme
-    kdeFrameworks.breeze-icons # icons for dolphin,meld etc
-    lxappearance-gtk2 # for setting icons
+    unstable.meld
     colorpicker
-    xfce.xfce4-screenshooter
     nitrogen
   ];
   
