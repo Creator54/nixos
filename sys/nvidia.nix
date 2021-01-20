@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+
+# This creates a new 'nvidia-offload' program that runs the application passed to it on the GPU
+# As per https://nixos.wiki/wiki/Nvidia
 
 let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
@@ -13,18 +16,20 @@ in
   services = {
     xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
-      # videoDrivers = [ "nvidia" "modesetting" ];
+      videoDrivers = lib.mkDefault [ "nvidia" ];
     };
   };
   hardware.nvidia = {
     prime = {
-      offload.enable = true;
+      offload.enable = lib.mkDefault true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
+    modesetting.enable = true;
     nvidiaPersistenced = true;
   };
 }
 
-#https://discourse.nixos.org/t/cant-use-nvidia-prime-with-laptop/6767/7
+# https://kevincox.ca/2020/12/04/nixos-config-switching/
+# https://discourse.nixos.org/t/cant-use-nvidia-prime-with-laptop/6767/7
+# https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/nvidia.nix
