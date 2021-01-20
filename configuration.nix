@@ -6,6 +6,7 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
+      ./sys/nvidia.nix
       ./desktop/gnome.nix
     ];
 
