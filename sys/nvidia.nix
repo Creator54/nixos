@@ -28,6 +28,12 @@ in
     modesetting.enable = true;
     nvidiaPersistenced = true;
   };
+  environment.systemPackages = with pkgs; [
+    # nvidia offload script
+    nvidia-offload
+  ];
+
+
 }
 
 # https://kevincox.ca/2020/12/04/nixos-config-switching/
