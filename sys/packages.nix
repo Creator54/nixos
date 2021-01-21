@@ -23,6 +23,8 @@ in
     firefox
     kitty
     unstable.fortune
+    unstable.capitaine-cursors
+    unstable.bibata-extra-cursors
     unstable.papirus-maia-icon-theme
     adapta-gtk-theme #dark theme
     unstable.meld
