@@ -19,9 +19,10 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    wget vim htop nox git unstable.dialog
+    wget vim htop feh nox git unstable.dialog
     firefox
     kitty
+    unstable.fortune
     unstable.papirus-maia-icon-theme
     adapta-gtk-theme #dark theme
     unstable.meld

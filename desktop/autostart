@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 col=$(tput cols)
-title="Fetching your configs"
-end="Press any key to start xserver .."
-space="		"
-space1="	    "
+title="Checking Configs"
+end="Welcome Back 😃"
+space="                	"
 
 f1() {
 	for (( i=1; i<=$col; i++ ));
@@ -84,11 +83,9 @@ echo
 echo
 
 if [[ $? == 0 ]] ; then
-	printf "%*s\n" $(((${#end}+$col)/2)) "$space1 $end";
-	read key
-	if [ ${#key} -eq 0 ] ; then
-		startx &> /dev/null;
-	fi
+	printf `tput bold`"%*s\n" $(((${#end}+$col)/2)) "$space $end"`tput sgr0`;
+
+	startx &> /dev/null;
 else
 	exit;
 fi
