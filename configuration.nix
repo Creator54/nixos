@@ -6,8 +6,8 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
-      ./sys/nvidia.nix
-      ./desktop/gnome.nix
+      #./sys/nvidia.nix
+      ./desktop/awesome.nix
     ];
 
   boot = {
