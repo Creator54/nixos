@@ -16,6 +16,8 @@
     networkmanagerapplet
     lxappearance-gtk2 # for setting icons
     colorpicker
+    picom
+    dmenu
     xfce.xfce4-screenshooter
     nitrogen
   ];
