@@ -10,6 +10,7 @@
     initrd.kernelModules = [ "i915" ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
+    supportedFilesystems = [ "ntfs-3g" ];
     #kernelPackages = pkgs.linuxPackages_latest;
 
     # https://discourse.nixos.org/t/thinkpad-t470s-power-management/8141
@@ -56,6 +57,12 @@
   fileSystems."/home" =
     { device = "/dev/sda5";
       fsType = "ext4";
+    };
+
+  fileSystems."/run/mount/data" =
+    { device = "/dev/sda6";
+      fsType = "ntfs";
+      options = [ "rw" "uid=1000" "gid=100"]; #1000 is $USER uid
     };
 
   swapDevices = [ { device = "/swapfile"; size = 4096; } ];
