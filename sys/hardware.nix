@@ -64,6 +64,10 @@
       fsType = "ntfs";
       options = [ "rw" "uid=1000" "gid=100"]; #1000 is $USER uid
     };
+  fileSystems."/run/mount/data1" =
+    { device = "/dev/sda7";
+      fsType = "ext4";
+    };
 
   swapDevices = [ { device = "/swapfile"; size = 4096; } ];
 

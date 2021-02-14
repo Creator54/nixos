@@ -4,10 +4,10 @@ let
 
   stableTarball = 
     fetchTarball
-      https://releases.nixos.org/nixos/20.09/nixos-20.09.2382.ca119749d86/nixexprs.tar.xz;
+      https://releases.nixos.org/nixos/20.09/nixos-20.09.3087.2394284537b/nixexprs.tar.xz;
   unstableTarball =
     fetchTarball
-      https://releases.nixos.org/nixpkgs/nixpkgs-21.03pre259358.b67ba0bfcc7/nixexprs.tar.xz;
+      https://releases.nixos.org/nixpkgs/nixpkgs-21.03pre269485.a58a0b5098f/nixexprs.tar.xz;
 in
 {
   nixpkgs.config = {
@@ -30,6 +30,11 @@ in
     unstable.meld
     colorpicker
     nitrogen
+    xorg.xf86videointel
+    xorg.xf86inputmouse
+    xorg.xf86inputkeyboard
+    xorg.xf86inputlibinput
+    xorg.xf86inputsynaptics
   ];
   
   # Some fonts
