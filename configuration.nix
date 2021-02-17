@@ -37,10 +37,13 @@
     earlySetup = true;
   };
 
+  #docker
+  virtualisation.docker.enable = true;
+
   # useraccount & properties
   users.users.creator54 = {
      isNormalUser = true;
-     extraGroups = [ "power" "storage" "wheel" "audio" "video" "networkmanager" ];
+     extraGroups = [ "docker" "power" "storage" "wheel" "audio" "video" "networkmanager" ];
      shell = pkgs.fish;
   };
 
