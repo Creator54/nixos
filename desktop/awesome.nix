@@ -12,7 +12,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    rofi unstable.dialog
+    rofi dialog
     networkmanagerapplet
     lxappearance-gtk2 # for setting icons
     colorpicker

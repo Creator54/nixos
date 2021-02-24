@@ -1,33 +1,16 @@
 { config, pkgs, ... }:
 
-let
-
-  stableTarball = 
-    fetchTarball
-      https://releases.nixos.org/nixos/20.09/nixos-20.09.3087.2394284537b/nixexprs.tar.xz;
-  unstableTarball =
-    fetchTarball
-      https://releases.nixos.org/nixpkgs/nixpkgs-21.03pre269485.a58a0b5098f/nixexprs.tar.xz;
-in
 {
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
-    };
-  };
-
   environment.systemPackages = with pkgs; [
-    wget vim htop feh nox git unstable.dialog
+    wget vim htop feh nox git
     firefox
     kitty
-    unstable.fortune
-    unstable.capitaine-cursors
-    unstable.bibata-extra-cursors
-    unstable.papirus-maia-icon-theme
+    fortune
+    capitaine-cursors
+    bibata-extra-cursors
+    papirus-maia-icon-theme
     adapta-gtk-theme #dark theme
-    unstable.meld
+    meld
     colorpicker
     nitrogen
     xorg.xf86videointel

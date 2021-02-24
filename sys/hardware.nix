@@ -11,7 +11,6 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     supportedFilesystems = [ "ntfs-3g" ];
-    #kernelPackages = pkgs.linuxPackages_latest;
 
     # https://discourse.nixos.org/t/thinkpad-t470s-power-management/8141
     extraModprobeConfig = lib.mkMerge [

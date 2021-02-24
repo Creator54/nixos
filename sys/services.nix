@@ -71,15 +71,5 @@
   };
 
   sound.enable = true;
-
-  # autostart on tty1 login
-  programs.fish = {
-    enable = true;
-    loginShellInit = ''
-      if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
-        #exec /etc/nixos/sys/autostart
-      end
-    '';
-  };
 }
 
