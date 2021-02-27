@@ -38,7 +38,15 @@
   };
 
   #docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    extraOptions = "--config-file=${pkgs.writeText "daemon.json" (builtins.toJSON {
+      graph ="/run/mount/data1/Docker";
+      storage-driver = "overlay";
+    })}";
+  };
+  # https://stackoverflow.com/questions/24309526/how-to-change-the-docker-image-installation-directory
+  # https://github.com/NixOS/nixpkgs/issues/68349
 
   # useraccount & properties
   users.users.creator54 = {
