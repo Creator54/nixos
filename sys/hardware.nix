@@ -11,6 +11,7 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     supportedFilesystems = [ "ntfs-3g" ];
+    resumeDevice = "/dev/sda4";
 
     # https://discourse.nixos.org/t/thinkpad-t470s-power-management/8141
     extraModprobeConfig = lib.mkMerge [
@@ -27,6 +28,7 @@
       "i915.enable_fbc=1"
       "i915.enable_psr=2"
       "intel_pstate=disable"
+      "resume_offset=36864"
     ];
   };
 
