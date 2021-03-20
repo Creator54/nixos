@@ -41,7 +41,11 @@
       };
     };
 
-    mingetty.autologinUser = "creator54";
+    mingetty = {
+      greetingLine = "Welcome Back Creator54";
+      helpLine = "";
+      autologinUser = "creator54";
+    };
     thermald.enable = true;
     upower.enable = true;
     # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/hdd/default.nix

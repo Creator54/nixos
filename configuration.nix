@@ -19,6 +19,7 @@
     #kernelParams = ["quiet" ];
     #consoleLogLevel = 4;
     #plymouth.enable = true;
+    cleanTmpDir = true;
   };
 
   # networking
