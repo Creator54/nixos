@@ -22,8 +22,8 @@
     tlp = {
       enable = true;
       settings = {
-        CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-        CPU_SCALING_GOVERNOR_ON_AC="powersave";
+        CPU_SCALING_GOVERNOR_ON_BAT="schedutil";
+        CPU_SCALING_GOVERNOR_ON_AC="schedutil";
 
         # The following prevents the battery from charging fully to
         # preserve lifetime. Run `tlp fullcharge` to temporarily force
@@ -34,8 +34,8 @@
 
         # 100 being the maximum, limit the speed of my CPU to reduce
         # heat and increase battery usage:
-        CPU_MAX_PERF_ON_AC=30;
-        CPU_MAX_PERF_ON_BAT=10;
+        CPU_MAX_PERF_ON_AC=100;
+        CPU_MAX_PERF_ON_BAT=5;
 	SOUND_POWER_SAVE_ON_AC=0;
         SOUND_POWER_SAVE_ON_BAT=1;
       };
