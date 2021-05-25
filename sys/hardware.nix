@@ -71,6 +71,4 @@
     };
 
   swapDevices = [ { device = "/swapfile"; size = 4096; } ];
-
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
