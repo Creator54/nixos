@@ -6,6 +6,7 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
+      ./sys/kernel.nix
       #./sys/docker.nix
       #./sys/nvidia.nix
       ./desktop/awesome.nix

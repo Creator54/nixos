@@ -41,7 +41,7 @@
       };
     };
 
-    mingetty = {
+    getty = {
       greetingLine = "Welcome Back Creator54";
       helpLine = "";
       autologinUser = "creator54";
@@ -75,5 +75,6 @@
   };
 
   sound.enable = true;
+  system.autoUpgrade.enable = true;
 }
 
