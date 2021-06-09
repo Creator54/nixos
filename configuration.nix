@@ -6,8 +6,7 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
-      ./sys/kernel.nix
-      #./sys/docker.nix
+      ./sys/docker.nix
       #./sys/nvidia.nix
       ./desktop/awesome.nix
     ];
@@ -47,6 +46,7 @@
      shell = pkgs.fish;
   };
 
+  services.openssh.enable = true;
   # Maintainence
   nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
   nix.gc.dates = "18:30";
