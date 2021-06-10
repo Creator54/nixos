@@ -13,6 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     rofi dialog
+    betterlockscreen
     networkmanagerapplet
     lxappearance-gtk2 # for setting icons
     colorpicker
