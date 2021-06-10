@@ -15,7 +15,7 @@
     };
 
   environment.systemPackages = with pkgs; [
-    wget vim htop feh nox git
+    wget vim htop feh nox git gh
     unstable.firefox
     kitty
     fortune
