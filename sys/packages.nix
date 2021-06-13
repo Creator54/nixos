@@ -3,7 +3,7 @@
   let
     unstableTarball =
       fetchTarball
-        https://releases.nixos.org/nixos/20.09/nixos-20.09beta992.7badbf18c45/nixexprs.tar.xz;
+        https://releases.nixos.org/nixos/20.09/nixos-20.09.4318.6f3e97e3f8c/nixexprs.tar.xz;
   in
   {
     nixpkgs.config = {
