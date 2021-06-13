@@ -16,6 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     wget vim htop feh nox git github-cli
+    gnumake
     unstable.firefox
     kitty
     fortune
