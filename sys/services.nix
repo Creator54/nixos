@@ -73,7 +73,7 @@
       { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
     ];
   };
-
+  services.mongodb.enable = true;
   sound.enable = true;
   system.autoUpgrade.enable = true;
 }

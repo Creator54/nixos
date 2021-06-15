@@ -40,12 +40,16 @@
   };
 
   # useraccount & properties
-  users.users.creator54 = {
-     isNormalUser = true;
-     extraGroups = [ "docker" "power" "storage" "wheel" "audio" "video" "networkmanager" ];
-     shell = pkgs.fish;
+  users = {
+    users.creator54 = {
+       isNormalUser = true;
+       extraGroups = [ "docker" "power" "storage" "wheel" "audio" "video" "networkmanager" ];
+       shell = pkgs.fish;
+    };
+    extraGroups.vboxusers.members = [ "creator54" ];
   };
 
+  virtualisation.virtualbox.host.enable = true;
   services.openssh.enable = true;
   # Maintainence
   nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
