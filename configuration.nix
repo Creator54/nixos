@@ -7,7 +7,7 @@
       ./sys/packages.nix
       ./sys/services.nix
       ./sys/docker.nix
-      #./sys/nvidia.nix
+      ./sys/nvidia.nix
       ./desktop/awesome.nix
     ];
 
@@ -43,13 +43,18 @@
   users = {
     users.creator54 = {
        isNormalUser = true;
-       extraGroups = [ "docker" "power" "storage" "wheel" "audio" "video" "networkmanager" ];
+       extraGroups = [ "libvirtd" "docker" "power" "storage" "wheel" "audio" "video" "networkmanager" ];
        shell = pkgs.fish;
     };
     extraGroups.vboxusers.members = [ "creator54" ];
   };
 
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation = {
+    virtualbox.host.enable = true;
+    libvirtd = {
+      enable = true;
+    };
+  };
   services.openssh.enable = true;
   # Maintainence
   nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
