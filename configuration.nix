@@ -3,6 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./packages.nix
       ./desktop/awesome.nix
     ];
 
@@ -40,10 +41,10 @@
        isNormalUser = true;
        extraGroups = [ "root" ];
        shell = pkgs.fish;
-       initialHashedPassword = "jack@1234";
+       initialPassword = "jack@1234";
     };
   };
-
+  
   fileSystems."/".device = "/dev/sda4";
 
   # Maintainence
