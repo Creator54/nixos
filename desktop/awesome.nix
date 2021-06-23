@@ -12,7 +12,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    rofi dialog
+    dmenu
     betterlockscreen
     networkmanagerapplet
     colorpicker
@@ -24,7 +24,13 @@
     enable = true;
     loginShellInit = ''
       if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
-	      exec /etc/nixos/desktop/autostart
+        echo "exec awesome" >> ~/.xinitrc;
+        if ! [[ -d ~/.config/awesome ]]
+	        echo "getting your Awesome WM config ....";
+	        echo
+	        git clone https://github.com/creator54/awesome-configs -b new ~/.config/awesome;
+        end
+        startx &> /dev/null;
       end
     '';
   };
