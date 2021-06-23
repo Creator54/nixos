@@ -12,7 +12,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    dmenu
+    dmenu git kitty
     betterlockscreen
     networkmanagerapplet
     colorpicker
@@ -24,15 +24,15 @@
     enable = true;
     loginShellInit = ''
       if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
-        echo "exec awesome" >> ~/.xinitrc;
-        if ! [[ -d ~/.config/awesome ]]
-	        echo "getting your Awesome WM config ....";
-	        echo
-	        git clone https://github.com/creator54/awesome-configs -b new ~/.config/awesome;
+        if not test -d ~/.config/awesome
+          clear;
+          echo "Fetching your AWESOME Config .....";
+          echo
+          git clone https://github.com/creator54/awesome -b new ~/.config/awesome --depth=1;
         end
-        startx &> /dev/null;
+        echo "exec awesome" >> ~/.xinitrc;
+#startx &> /dev/null;
       end
     '';
   };
 }
-
