@@ -5,7 +5,7 @@
     xserver = {
       displayManager = {
         defaultSession = "none+awesome";
-	startx.enable = true;
+	      startx.enable = true;
       };
       windowManager.awesome.enable = true;
     };
@@ -15,12 +15,7 @@
     rofi dialog
     betterlockscreen
     networkmanagerapplet
-    lxappearance-gtk2 # for setting icons
     colorpicker
-    picom
-    dmenu
-    xfce.xfce4-screenshooter
-    nitrogen
   ];
 
 
@@ -29,7 +24,7 @@
     enable = true;
     loginShellInit = ''
       if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
-	exec /etc/nixos/desktop/autostart
+	      exec /etc/nixos/desktop/autostart
       end
     '';
   };
