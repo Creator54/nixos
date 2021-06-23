@@ -12,7 +12,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    dmenu git kitty
+    dmenu
     betterlockscreen
     networkmanagerapplet
     colorpicker
