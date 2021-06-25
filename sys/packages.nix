@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
   let
-    unstableTarball =
-      fetchTarball
-        https://releases.nixos.org/nixos/20.09/nixos-20.09.4318.6f3e97e3f8c/nixexprs.tar.xz;
+    unstableTarball = fetchTarball https://releases.nixos.org/nixpkgs/nixpkgs-21.05pre286178.ff13163e3fd/nixexprs.tar.xz;
   in
   {
     nixpkgs.config = {

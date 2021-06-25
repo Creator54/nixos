@@ -41,7 +41,7 @@
       };
     };
 
-    mingetty = {
+    getty = {
       greetingLine = "Welcome Back Creator54";
       helpLine = "";
       autologinUser = "creator54";
