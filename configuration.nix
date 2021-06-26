@@ -2,12 +2,14 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
-      ./sys/docker.nix
-      ./sys/nvidia.nix
+      #./sys/docker.nix
+      #./sys/nvidia.nix
+      #./vm-configs/virt-manager.nix
+      #./vm-configs/virtualbox.nix
       ./desktop/awesome.nix
     ];
 
@@ -43,18 +45,11 @@
   users = {
     users.creator54 = {
        isNormalUser = true;
-       extraGroups = [ "libvirtd" "docker" "power" "storage" "wheel" "audio" "video" "networkmanager" ];
+       extraGroups = [ "power" "storage" "wheel" "audio" "video" "networkmanager" ];
        shell = pkgs.fish;
     };
-    extraGroups.vboxusers.members = [ "creator54" ];
   };
 
-  virtualisation = {
-    virtualbox.host.enable = true;
-    libvirtd = {
-      enable = true;
-    };
-  };
   services.openssh.enable = true;
   # Maintainence
   nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
