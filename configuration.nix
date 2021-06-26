@@ -6,6 +6,7 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
+      #./sys/plymouth.nix
       #./sys/docker.nix
       #./sys/nvidia.nix
       #./vm-configs/virt-manager.nix
@@ -19,9 +20,6 @@
       timeout = 0;
       efi.canTouchEfiVariables = true;
     };
-    #kernelParams = ["quiet" ];
-    #consoleLogLevel = 4;
-    #plymouth.enable = true;
     cleanTmpDir = true;
   };
 
