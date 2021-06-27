@@ -42,7 +42,7 @@
     };
 
     getty = {
-      greetingLine = "Welcome Back Creator54";
+      greetingLine = "";
       helpLine = "";
       autologinUser = "creator54";
     };
@@ -52,6 +52,16 @@
     # Hard disk protection if the laptop falls:
     hdapsd.enable = lib.mkDefault true;
     # printing.enable = true; 				# enables CUPS for printing
+    
+    actkbd = {
+      enable = true;
+      bindings = [  # light controls
+        { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
+        { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
+      ];
+    };
+   
+    #mongodb.enable = true;
   };
   
   # systemd services which i dont like/use mostly cuz increases boot time and i find no issues not having them
@@ -66,15 +76,6 @@
 
   # light works even without an xsession
   programs.light.enable = true;
-  services.actkbd = {
-    enable = true;
-    bindings = [
-      { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
-      { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
-    ];
-  };
-  #services.mongodb.enable = true;
   sound.enable = true;
-  system.autoUpgrade.enable = true;
 }
 
