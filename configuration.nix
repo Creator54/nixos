@@ -11,7 +11,7 @@
       #./sys/nvidia.nix
       #./vm-configs/virt-manager.nix
       #./vm-configs/virtualbox.nix
-      ./desktop/pantheon.nix
+      ./desktop/awesome.nix
     ];
 
   boot = {
@@ -27,6 +27,7 @@
   networking = {
     networkmanager.enable = true;
     hostName = "CosPi";
+    nameservers = ["1.1.1.1" "9.9.9.9"]; #without this will have to add nameserves to /etc/resolv.conf , internet fails without this
   };
   
   time.timeZone = "Asia/Kolkata";

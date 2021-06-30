@@ -11,7 +11,7 @@
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     supportedFilesystems = [ "ntfs-3g" ];
-    resumeDevice = "/dev/sda4";
+    resumeDevice = "/dev/sda5";
 
     # https://discourse.nixos.org/t/thinkpad-t470s-power-management/8141
     extraModprobeConfig = lib.mkMerge [
@@ -46,7 +46,7 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/sda4";
+    { device = "/dev/sda5";
       fsType = "ext4";
     };
 
@@ -56,17 +56,17 @@
     };
 
   fileSystems."/home" =
-    { device = "/dev/sda5";
+    { device = "/dev/sda6";
       fsType = "ext4";
     };
 
   fileSystems."/run/mount/data" =
-    { device = "/dev/sda6";
+    { device = "/dev/sda7";
       fsType = "ntfs";
       options = [ "rw" "uid=1000" "gid=100"]; #1000 is $USER uid
     };
   fileSystems."/run/mount/data1" =
-    { device = "/dev/sda7";
+    { device = "/dev/sda8";
       fsType = "ext4";
     };
 
