@@ -28,7 +28,7 @@
       "i915.enable_fbc=1"
       "i915.enable_psr=2"
       "intel_pstate=disable"
-      "resume_offset=36864"
+      "resume_offset=61440" #get it via sudo filefrag -v /swapfile | awk '{if($1=="0:"){print $4}}'
     ];
   };
 
@@ -45,9 +45,11 @@
     pulseaudio.support32Bit = true;
   };
 
+  # Setting noatime in the fstab greatly improves filesystem performance.
   fileSystems."/" =
     { device = "/dev/sda4";
       fsType = "ext4";
+      options = [ "noatime" ];
     };
 
   fileSystems."/boot" =
@@ -70,5 +72,14 @@
       fsType = "ext4";
     };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    #memoryMax = 3072;
+    memoryPercent = 50;
+    numDevices = 1;
+    priority = 5;
+  };
+    
   swapDevices = [ { device = "/swapfile"; size = 4096; } ];
 }

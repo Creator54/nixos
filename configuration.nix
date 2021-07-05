@@ -6,6 +6,7 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
+      #./sys/kernel.nix
       #./sys/plymouth.nix
       #./sys/docker.nix
       #./sys/nvidia.nix
@@ -17,7 +18,7 @@
   boot = {
     loader = {
       systemd-boot.enable = true;
-      timeout = 0;
+      timeout = 5;
       efi.canTouchEfiVariables = true;
     };
     cleanTmpDir = true;
@@ -27,7 +28,7 @@
   networking = {
     networkmanager.enable = true;
     hostName = "CosPi";
-    nameservers = ["1.1.1.1" "9.9.9.9"]; #without this will have to add nameserves to /etc/resolv.conf , internet fails without this
+    nameservers = ["1.1.1.1" "9.9.9.9"]; #without this will have to add nameserves to /etc/resolv.conf , internet fails without this on chroot
   };
   
   time.timeZone = "Asia/Kolkata";
@@ -48,6 +49,8 @@
        shell = pkgs.fish;
     };
   };
+ 
+  security.allowSimultaneousMultithreading = true;
 
   services.openssh.enable = true;
   # Maintainence
