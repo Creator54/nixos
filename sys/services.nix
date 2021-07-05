@@ -74,6 +74,16 @@
     lvm2-activation.enable = false;
   };
 
+  # stop spinning disks on idle
+  # https://www.reddit.com/r/NixOS/comments/751i5t/how_to_specify_that_hard_disks_should_spin_down/
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    powerUpCommands = with pkgs;''
+        ${pkgs.hdparm}/sbin/hdparm -S 1 /dev/sda
+    '';
+  };
+
   # light works even without an xsession
   programs.light.enable = true;
   sound.enable = true;
