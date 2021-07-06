@@ -12,6 +12,10 @@
       #./sys/nvidia.nix
       #./vm-configs/virt-manager.nix
       #./vm-configs/virtualbox.nix
+      #./gpu-passthrough/libvirt.nix
+      #./gpu-passthrough/usage.nix
+      #./gpu-passthrough/vfio.nix
+      #./gpu-passthrough/virtualisation.nix
       ./desktop/awesome.nix
     ];
 
@@ -57,7 +61,7 @@
   nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
   nix.gc.dates = "18:30";
 
-  system.stateVersion = "20.09";
+  system.stateVersion = "21.05";
 }
 
 
