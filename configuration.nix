@@ -57,7 +57,7 @@
   nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
   nix.gc.dates = "18:30";
 
-  system.stateVersion = "20.09";
+  system.stateVersion = "21.05";
 }
 
 
