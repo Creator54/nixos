@@ -25,13 +25,13 @@
 
 
   # autostart on tty1 login
-  programs.fish = {
-    enable = true;
-    loginShellInit = ''
-      if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
-	exec /etc/nixos/desktop/autostart
-      end
-    '';
-  };
+ # programs.fish = {
+ #   enable = true;
+ #   loginShellInit = ''
+ #     if test (id --user $USER) -ge 1000 && test (tty) = "/dev/tty1"
+ #       exec /etc/nixos/desktop/autostart
+ #     end
+ #   '';
+ # };
 }
 
