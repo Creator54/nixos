@@ -6,16 +6,16 @@
       ./sys/hardware.nix
       ./sys/packages.nix
       ./sys/services.nix
-      #./sys/kernel.nix
+      ./sys/kernel.nix
       #./sys/plymouth.nix
       #./sys/docker.nix
       #./sys/nvidia.nix
       #./vm-configs/virt-manager.nix
       #./vm-configs/virtualbox.nix
-      #./gpu-passthrough/libvirt.nix
-      #./gpu-passthrough/usage.nix
-      #./gpu-passthrough/vfio.nix
-      #./gpu-passthrough/virtualisation.nix
+      ./gpu-passthrough/libvirt.nix
+      ./gpu-passthrough/usage.nix
+      ./gpu-passthrough/vfio.nix
+      ./gpu-passthrough/virtualisation.nix
       ./desktop/awesome.nix
     ];
 

@@ -34,9 +34,9 @@
       IOMMUType = "intel";
       devices = [ "10de:1d10" ]; #get PCI ids via lspci -nn 8086:9d71
       blacklistNvidia = true;
-      disableEFIfb = true;
+      disableEFIfb = false;
       ignoreMSRs = true;
-      applyACSpatch = true;
+      applyACSpatch = false;
     };
   };
 }

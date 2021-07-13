@@ -64,25 +64,25 @@ in {
     boot.blacklistedKernelModules =
       optionals cfg.blacklistNvidia [ "nvidia" "nouveau" ];
 
-    #boot.kernelPatches = optionals cfg.applyACSpatch [
-    #  {
-    #    name = "add-acs-overrides";
-    #    patch = pkgs.fetchurl {
-    #      name = "add-acs-overrides.patch";
-    #      url =
-    #        "https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio&id=6f5c5ff2e42abf6606564383d5cb3c56b13d895e";
-    #      sha256 = "1qd68s9r0ppynksbffqn2qbp1whqpbfp93dpccp9griwhx5srx6v";
-    #    };
-    #  }
-    #  {
-    #    name = "i915-vga-arbiter";
-    #    patch = pkgs.fetchurl {
-    #      name = "i915-vga-arbiter.patch";
-    #      url =
-    #        "https://aur.archlinux.org/cgit/aur.git/plain/i915-vga-arbiter.patch?h=linux-vfio&id=6f5c5ff2e42abf6606564383d5cb3c56b13d895e";
-    #      sha256 = "1mg06dmlsdzf9w6jy73izjpa8ma7yh80k48rjj6iq30qs4jw1d5g";
-    #    };
-    #  }
-    #];
+    boot.kernelPatches = optionals cfg.applyACSpatch [
+      {
+        name = "add-acs-overrides";
+        patch = pkgs.fetchurl {
+          name = "add-acs-overrides.patch";
+          url =
+            "https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio&id=6f5c5ff2e42abf6606564383d5cb3c56b13d895e";
+          sha256 = "1qd68s9r0ppynksbffqn2qbp1whqpbfp93dpccp9griwhx5srx6v";
+        };
+      }
+      {
+        name = "i915-vga-arbiter";
+        patch = pkgs.fetchurl {
+          name = "i915-vga-arbiter.patch";
+          url =
+            "https://aur.archlinux.org/cgit/aur.git/plain/i915-vga-arbiter.patch?h=linux-vfio&id=6f5c5ff2e42abf6606564383d5cb3c56b13d895e";
+          sha256 = "1mg06dmlsdzf9w6jy73izjpa8ma7yh80k48rjj6iq30qs4jw1d5g";
+        };
+      }
+    ];
   };
 }
