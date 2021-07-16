@@ -52,7 +52,7 @@
  
   security.allowSimultaneousMultithreading = true;
 
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
   # Maintainence
   nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
   nix.gc.dates = "18:30";
