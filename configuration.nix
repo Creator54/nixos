@@ -9,8 +9,8 @@
       #./sys/kernel.nix
       #./sys/plymouth.nix
       #./sys/docker.nix
-      #./sys/nvidia.nix
-      #./vm-configs/virt-manager.nix
+      ./sys/nvidia.nix
+      ./vm-configs/virt-manager.nix
       #./vm-configs/virtualbox.nix
       ./desktop/awesome.nix
     ];
@@ -54,10 +54,11 @@
 
   #services.openssh.enable = true;
   # Maintainence
-  nix.gc.automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
-  nix.gc.dates = "18:30";
+  nix.gc = {
+    automatic = true; 				# runs nix-collect-garbage which removes old unrefrenced packages
+    dates = "18:30";
+  };
 
   system.stateVersion = "21.05";
 }
-
 
