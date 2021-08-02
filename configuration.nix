@@ -28,7 +28,7 @@
   networking = {
     networkmanager.enable = true;
     hostName = "CosPi";
-    nameservers = ["1.1.1.1" "9.9.9.9"]; #without this will have to add nameserves to /etc/resolv.conf , internet fails without this on chroot
+    nameservers = ["8.8.4.4" "8.8.8.8" "1.1.1.1" "9.9.9.9"]; #without this will have to add nameserves to /etc/resolv.conf , internet fails without this on chroot, should be declared since not using dhcp
   };
   
   time.timeZone = "Asia/Kolkata";
@@ -59,6 +59,7 @@
     dates = "18:30";
   };
 
+  time.hardwareClockInLocalTime = true;
   system.stateVersion = "21.05";
 }
 
