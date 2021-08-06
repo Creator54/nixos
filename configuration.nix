@@ -12,7 +12,6 @@
       ./sys/nvidia.nix
       ./vm-configs/virt-manager.nix
       #./vm-configs/virtualbox.nix
-      ./desktop/awesome.nix
     ];
 
   boot = {
